@@ -1,24 +1,32 @@
----------------------------
--- Default awesome theme --
----------------------------
+--[[
+ ______     ______     ______     __  __     ______   __     ______   __  __     __        
+/\  == \   /\  ___\   /\  __ \   /\ \/\ \   /\__  _\ /\ \   /\  ___\ /\ \/\ \   /\ \       
+\ \  __<   \ \  __\   \ \  __ \  \ \ \_\ \  \/_/\ \/ \ \ \  \ \  __\ \ \ \_\ \  \ \ \____  
+ \ \_____\  \ \_____\  \ \_\ \_\  \ \_____\    \ \_\  \ \_\  \ \_\    \ \_____\  \ \_____\ 
+  \/_____/   \/_____/   \/_/\/_/   \/_____/     \/_/   \/_/   \/_/     \/_____/   \/_____/ 
+                                                                                          
+  --]]
 
-local theme_assets = require("beautiful.theme_assets")
-local xresources = require("beautiful.xresources")
-local rnotification = require("ruled.notification")
+-- Requirement
+local xresources = require "beautiful.xresources"
+local rnotification = require "ruled.notification"
 local dpi = xresources.apply_dpi
 local gears = require "gears"
-local gfs = require("gears.filesystem")
+local gfs = require "gears.filesystem" 
+
+-- Var
 local themes_path = gfs.get_configuration_dir() .. "theme/"
 local walls_path = "~/.local/pictures/Walls/"
-local home = os.getenv('HOME')
+local home = os.getenv 'HOME'
 
 local theme = {}
 
 ----- User Preferences -----
+
 theme.wallpaper =  home .. "/Downloads/girlfarm.jpg"
 
 theme.pfp = themes_path .. "assets/pfp.jpg"
-theme.user = "Neko"
+theme.user = string.gsub(os.getenv('USER'), '^%l', string.upper)
 theme.hostname = "@Neptune"
 
 ----- Font -----
@@ -29,11 +37,11 @@ theme.font_size = " Medium 14"
 
 ----- General/default Settings -----
 
-theme.bg_normal     = "#151515"
-theme.bg_focus      = "#151515"
-theme.bg_urgent     = "#151515"
-theme.bg_minimize   = "#151515"
-theme.bg_systray    = theme.bg_normal
+theme.bg_normal     = "#101419"
+theme.bg_focus      = "#101419"
+theme.bg_urgent     = "#101419"
+theme.bg_minimize   = "#101419"
+theme.bg_systray    = "#101419"
 
 theme.fg_normal     = "#C5C8C6"
 theme.fg_focus      = theme.fg_normal
@@ -43,7 +51,7 @@ theme.fg_minimize   = theme.fg_normal
 theme.useless_gap         = dpi(10)
 theme.border_width        = dpi(0)
 
------ Colors -----
+-- Colors
 
 theme.black = "#242931"
 theme.white = "#b6beca"
@@ -55,34 +63,12 @@ theme.magenta = "#c68aee"
 theme.pink = "#E8B2C0"
 theme.transparent = "#00000000"
 
-theme.gradient = {
-    [1] = "#0f2e55",
-    [2] = "#005982",
-    [3] = "#008798",
-}
+theme.fg = "#C5C8C6"
 
-theme.empty = "#404B66"
+theme.bg = "#101419"
+theme.bg_alt = "#15191e"
 
-
------ Bar -----
-
-theme.bar = "#101419"
-theme.bar_alt = "#15191e"
-
-theme.taglist_fg_focus = theme.yellow
-theme.taglist_fg_occupied = theme.fg_normal
-theme.taglist_fg_empty = "#404B66"
-theme.taglist_bg_focus = theme.blue
-
-theme.tasklist_plain_task_name = true
-
-theme.titlebar_bg_normal = theme.bar
-theme.titlebar_bg_focus = theme.bar_alt
-
-theme.notif = themes_path .. "notif.png"
-theme.screenshot = themes_path .. "screenshot.png"
-
------ Menu -----
+-- Menu
 
 theme.menu_height = dpi(35)
 theme.menu_width  = dpi(200)
@@ -90,15 +76,10 @@ theme.menu_fg_focus = theme.fg_normal
 theme.menu_fg_normal = theme.taglist_fg_empty
 theme.menu_bg_focus = theme.bar_alt
 theme.menu_bg_normal = theme.bar
-theme.submenu = ""
+theme.submenu = "î¶…"
 theme.menu_font = theme.font_name .. " 12"
 
--- You can add as many variables as
--- you wish and access them by using
--- beautiful.variable in your rc.lua
---theme.bg_widget = "#cc0000"
-
--- Define the image to load
+-- titlebar's buttons
 theme.titlebar_close_button_normal = gears.color.recolor_image(themes_path .. "assets/titlebar/close_1.png", theme.black)
 theme.titlebar_close_button_focus  = gears.color.recolor_image(themes_path .. "assets/titlebar/close_2.png", theme.red)
 
@@ -128,16 +109,8 @@ theme.layout_cornerne = themes_path.."default/layouts/cornernew.png"
 theme.layout_cornersw = themes_path.."default/layouts/cornersww.png"
 theme.layout_cornerse = themes_path.."default/layouts/cornersew.png"
 
--- Generate Awesome icon:
-theme.awesome_icon = theme_assets.awesome_icon(
-    theme.menu_height, theme.bg_focus, theme.fg_focus
-)
-
--- Define the icon theme for application icons. If not set then the icons
--- from /usr/share/icons and /usr/share/icons/hicolor will be used.
 theme.icon_theme = nil
 
--- Set different colors for urgent notifications.
 rnotification.connect_signal('request::rules', function()
    rnotification.append_rule {
         rule       = { urgency = 'critical' },
