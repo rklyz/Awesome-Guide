@@ -1,1 +1,0 @@
-local awful = require "awful"
