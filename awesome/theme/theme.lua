@@ -23,7 +23,7 @@ local theme = {}
 
 ----- User Preferences -----
 
-theme.wallpaper =  home .. "/Downloads/girlfarm.jpg"
+theme.wallpaper =  themes_path .. "assets/mountain.jpg"
 
 theme.pfp = themes_path .. "assets/pfp.jpg"
 theme.user = string.gsub(os.getenv('USER'), '^%l', string.upper)
