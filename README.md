@@ -19,7 +19,7 @@ But thankfully, I've done that horrendous job.
 you can get the pre-config files by clone it from here into `$HOME/.config/awesome/`
 
 ``` sh
-git clone https://rklyz/Awesome-Backup.git
+git clone https://github.com/rklyz/Awesome-Backup.git
 mkdir $HOME/.config/awesome
 cp -r Awesome-Backup/awesome/* $HOME/.config/awesome/
 ```
