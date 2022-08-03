@@ -34,4 +34,10 @@ Now you can start 'ricing' your desktop bit by bit.
 
 ### Creating a BAR
 
-to be continue..
+First, create a dir inside awesome.misc and a file "init.lua" it
+
+``` sh
+mkdir $HOME/.config/awesome/misc/bar
+vim $HOME/.config/awesome/misc/bar/init.lua
+```
+
