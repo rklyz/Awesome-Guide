@@ -34,10 +34,28 @@ Now you can start 'ricing' your desktop bit by bit.
 
 ### Creating a BAR
 
-First, create a dir inside awesome.misc and a file "init.lua" it
+Create a dir inside awesome.misc and a file "init.lua" inside it
 
 ``` sh
 mkdir $HOME/.config/awesome/misc/bar
-vim $HOME/.config/awesome/misc/bar/init.lua
+touch $HOME/.config/awesome/misc/bar/init.lua
 ```
 
+inside awesome.misc.bar.init
+
+```lua
+-- require some awesome libraries
+local awful = require "awful"
+local wibox = require "wibox"
+local gears = require "gears"
+local beautiful = require "beautiful"
+
+-- Creating a bar
+local create_bar = function(n)
+  local the_bar = wibox { -- We're creating a bar named "the_bar"
+    ontop = true,
+    visible = true,
+  }
+end
+```
+to be continued..
