@@ -12,7 +12,7 @@ Not ready yet
 
 ### How do you start ricing awesome?
 
-Separating the default config can a pretty good starting point. However, it can very annoying.
+Separating the default config can a good starting point. However, the process of it can be very annoying.
 
 But thankfully, I've done that horrendous job.
 
