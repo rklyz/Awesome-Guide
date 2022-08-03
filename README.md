@@ -164,6 +164,11 @@ the_bar : setup {
 ...
 ```
 
+references:
+
+- [:setup](https://awesomewm.org/apidoc/popups_and_bars/wibox.html#setup)
+- [wibox.layout.align](https://awesomewm.org/apidoc/widget_layouts/wibox.layout.align.html)
+
 And there you have it, a working clock!
 
 to be continued..
