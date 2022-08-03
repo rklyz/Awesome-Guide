@@ -1,5 +1,4 @@
 # Awesome-Backup
-Not ready yet
 
 ### Offered:
 
@@ -32,7 +31,7 @@ After you've logged in into awesome window manager, you'll find an empty desktop
 
 Now you can start 'ricing' your desktop bit by bit.
 
-### Creating a BAR
+<h2>Creating a BAR</h2>
 
 Create a dir inside awesome.misc and a file "init.lua" inside it
 
@@ -75,7 +74,7 @@ Try refreshing awesome and see if the bar works.
 
 ofcourse it **did not** work. Cause you haven't actually run it.
 
-To make it work, you need to run it through rc.lua.
+To make it work, you need to run it through **rc.lua**.
 
 ```lua
 ...
@@ -89,4 +88,49 @@ require "misc.bar" -- This line
 
 Now it should be working. However, it's just a blank boring bar. Let's put some widgets into it!
 
-To be continued..
+### Creating a clock widget
+
+Lets create a file name clock.lua inside awesome.misc.bar folder
+
+```sh
+touch $HOME/.config/awesome/misc/bar/clock.lua
+```
+
+inside clock.lua
+
+```lua
+-- require some awesome libraries
+local awful = require "awful"
+local wibox = require "wibox"
+local gears = require "gears"
+local beautiful = require "beautiful"
+
+-- Creating a clock
+local clock = wibox.widget.textbox()
+clock.font = "Roboto 14"
+
+-- Create a function for updating the time
+local function update_time()
+  time = os.date("%H:%M")
+  clock.markup = time
+end
+
+-- Timer
+gears.timer {
+  timeout = 60,          -- update every X second
+  autostart = true,      -- start automatically
+  call_now = true,       -- run callback when timer is created
+  callback = function()
+    update_time()
+  end
+}
+
+return clock -- This is IMPORTANT
+
+```
+
+references:
+
+- [wibox.widget.textbox](https://awesomewm.org/apidoc/widgets/wibox.widget.textbox.html)
+- [os.date](https://www.lua.org/pil/22.1.html)
+- [gears.timer](https://awesomewm.org/apidoc/core_components/gears.timer.html#gears.timer)
