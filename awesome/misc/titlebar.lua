@@ -42,8 +42,8 @@ local get_titlebar = function(c)
 		widget = wibox.container.background,
 	}
 
-	c:connect_signal("focus", function() container.bg = beautiful.bar_alt end)
-	c:connect_signal("unfocus", function() container.bg = beautiful.bar end)
+	c:connect_signal("focus", function() container.bg = beautiful.bg_alt end)
+	c:connect_signal("unfocus", function() container.bg = beautiful.bg end)
 
 	return wibox.widget {
 		{
