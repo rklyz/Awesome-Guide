@@ -134,3 +134,36 @@ references:
 - [wibox.widget.textbox](https://awesomewm.org/apidoc/widgets/wibox.widget.textbox.html)
 - [os.date](https://www.lua.org/pil/22.1.html)
 - [gears.timer](https://awesomewm.org/apidoc/core_components/gears.timer.html#gears.timer)
+
+Now, inside of awesome.misc.bar.init
+
+```lua
+...
+local beautiful = require "beautiful"
+
+-- Get some widgets
+local clock = require "misc.bar.clock" -- get the clock widget
+
+local the_bar = wibox {
+        ontop = true,
+        visible = true,
+        width = awful.screen.focused().geometry.width,
+        height = 40,
+        type = 'dock'
+}
+
+the_bar : struts {top = 60, bottom = 20, left = 10, right = 10}
+
+the_bar : setup {
+  nil,   -- Left part of the bar
+  nil,   -- Middle part ^
+  clock, -- Right part ^
+  layout = wibox.layout.align.horizontal,
+}
+
+...
+```
+
+And there you have it, a working clock!
+
+to be continued..
