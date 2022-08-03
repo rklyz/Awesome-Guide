@@ -51,11 +51,42 @@ local gears = require "gears"
 local beautiful = require "beautiful"
 
 -- Creating a bar
-local create_bar = function(n)
-  local the_bar = wibox { -- We're creating a bar named "the_bar"
-    ontop = true,
-    visible = true,
-  }
-end
+local the_bar = wibox { -- We're creating a bar named "the_bar"
+  ontop = true,
+  visible = true,
+  width = awful.screen.focused().geometry.width, -- focused screen's width
+  height = 40,
+  type = 'dock'
+}
+
+the_bar : struts {top = 60, bottom = 20, left = 10, right = 10} -- Create the gap between apps and the screen in tiling mode
+
 ```
-to be continued..
+
+References:
+
+- [wibox](https://awesomewm.org/apidoc/popups_and_bars/wibox.html#Object_properties)
+- [awful.screen.focused()](https://awesomewm.org/apidoc/core_components/screen.html#awful.screen.focused)
+- [:struts](https://awesomewm.org/apidoc/popups_and_bars/wibox.html#struts)
+
+Try refreshing awesome and see if the bar works.
+
+...
+
+ofcourse it **did not** work. Cause you haven't actually run it.
+
+To make it work, you need to run it through rc.lua.
+
+```lua
+...
+
+-- init widget
+require "misc"
+require "misc.bar" -- This line
+
+...
+```
+
+Now it should be working. However, it's just a blank boring bar. Let's put some widgets into it!
+
+To be continued..
